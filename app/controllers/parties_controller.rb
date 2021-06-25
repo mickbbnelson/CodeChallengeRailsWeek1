@@ -1,8 +1,7 @@
 class PartiesController < ApplicationController
 
     def index
-        @parties = Party.all
+        @parties = Party.parties
         
     end
-
 end
