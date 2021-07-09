@@ -20,7 +20,20 @@ class PartiesController < ApplicationController
         else
             render :new
         end
+    end
 
+    def edit
+        @party = Party.find_by_id(params[:id])
+    end
+
+    def update
+        @party = Party.find_by_id(params[:id])
+        @party.update(party_params)
+        if @party.valid?
+            redirect_to party_path(@party)
+        else
+         render :edit
+        end   
     end
 
     private
