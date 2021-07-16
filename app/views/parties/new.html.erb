@@ -1,25 +1,5 @@
 <h1>Add New Party</h1>
-<% if @party.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@party.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-    <ul>
-      <% @party.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for @party do |f| %>
-<label>Name:</label>
-<%= f.text_field :name %>
-<label>Date:</label>
-<%= f.date_field :date %>
-<label>Budget:</label>
-<%= f.number_field :budget %>
-<%= f.submit %>
-<%end%>
+<%= render 'form' %>
 
 
  

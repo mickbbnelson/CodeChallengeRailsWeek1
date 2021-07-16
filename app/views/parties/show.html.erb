@@ -1,7 +1,9 @@
 <%= @party.name %> <br>
 <%= @party.date %><br>
-<%= @party.category %><br>
-<%= @party.supplies %><br>
+<%= @party.category.name %><br>
+<% @party.supplies.each do |p| %><br>
+<%= p.name %>
+<% end %>
 <%= @party.budget %><br>
 <%= @party.private %>
 

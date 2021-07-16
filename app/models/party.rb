@@ -1,8 +1,14 @@
 class Party < ApplicationRecord
-    validates :date, :category, :supplies, :budget, presence: true
+    belongs_to :category
+    has_many :party_supplies
+    has_many :supplies, through: :party_supplies
+
+    validates :date, :budget, presence: true
     validates :date, uniqueness: true
-    validates :budget, numericality: true, length: { in: 100..10000 }
-    validate :party_validator
+    validates :budget, numericality: { in: 100..10000 }
+    # validate :party_validator
+
+    accepts_nested_attributes_for :category
 
 
 
