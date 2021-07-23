@@ -46,3 +46,8 @@ use a different layout for your category model
 use a different layout for a category’s show page
 use partials to clean up your code
 use helpers to clean up your code
+
+Finish tasks from last week.
+Make nested routes for parties (ex. categories/1/parties)
+Fix your form to use your nested routes to assign a category.
+use helper methods and partials to keep your code DRY

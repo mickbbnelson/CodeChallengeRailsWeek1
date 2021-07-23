@@ -6,7 +6,7 @@ class PartiesController < ApplicationController
     end
 
     def show
-        @party = Party.find_by_id(params[:id])
+       parties_finder 
     end
 
     def new
@@ -25,11 +25,11 @@ class PartiesController < ApplicationController
     end
 
     def edit
-        @party = Party.find_by_id(params[:id])
+        parties_finder
     end
 
     def update
-        @party = Party.find_by_id(params[:id])
+        parties_finder
         @party.update(party_params)
         if @party.valid?
             redirect_to party_path(@party)
@@ -42,6 +42,10 @@ class PartiesController < ApplicationController
 
     def party_params
     params.require(:party).permit(:name, :date, :budget, :private, :category_id, category_attribute: [:name])
+    end
+
+    def parties_finder
+        @party = Party.find_by_id(params[:id])
     end
 
 end
