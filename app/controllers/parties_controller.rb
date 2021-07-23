@@ -2,7 +2,14 @@ class PartiesController < ApplicationController
     layout 'party'
 
     def index
-        @parties = Party.parties   
+
+        if params[:category_id]
+            @category = Category.find(params[:category_id])
+            @parties = @category.parties
+        else
+            @parties = Party.parties
+
+        end
     end
 
     def show
@@ -41,7 +48,7 @@ class PartiesController < ApplicationController
     private
 
     def party_params
-    params.require(:party).permit(:name, :date, :budget, :private, :category_id, category_attribute: [:name])
+    params.require(:party).permit(:name, :date, :budget, :private, :category_id, category_attributes: [:name])
     end
 
     def parties_finder
