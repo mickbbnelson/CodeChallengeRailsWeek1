@@ -51,3 +51,9 @@ Finish tasks from last week.
 Make nested routes for parties (ex. categories/1/parties)
 Fix your form to use your nested routes to assign a category.
 use helper methods and partials to keep your code DRY
+
+Part 5
+
+on the supply index page return all the supplies alphabetically (use scope)
+Add a search feature in your parties that will filter parties by category (use scope)
+Add a search feature in your parties that will filter parties under a certain budget (use scope)

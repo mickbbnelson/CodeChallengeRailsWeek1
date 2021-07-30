@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_for @party do |f| %>
+<%= form_for ([@category, @party]) do |f| %>
   <label>Name:</label>
   <%= f.text_field :name %>
   <label>Date:</label>
@@ -18,6 +18,9 @@
   <label>Budget:</label>
   <%= f.number_field :budget %>
 
+<% if @category %>
+<%= f.hidden_field :category_id, value: @category.id %> 
+<% else %>
 <%= f.collection_select :category_id, Category.all, :id, :name %>
 
 <h2>Add a New Category</h2>
@@ -27,5 +30,7 @@
 <% end %>
 <br>
 <br>
+
+<% end %>
 <%= f.submit %>
 <%end%>

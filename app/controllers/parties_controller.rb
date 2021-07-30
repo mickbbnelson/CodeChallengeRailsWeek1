@@ -2,13 +2,11 @@ class PartiesController < ApplicationController
     layout 'party'
 
     def index
-
         if params[:category_id]
             @category = Category.find(params[:category_id])
             @parties = @category.parties
         else
             @parties = Party.parties
-
         end
     end
 
@@ -17,12 +15,19 @@ class PartiesController < ApplicationController
     end
 
     def new
+        if params[:category_id] && @category = Category.find_by(id: params[:category_id])
+            @party = @category.parties.build
+        else
         @party = Party.new
         @party.build_category
+        end
     end
 
     def create
         @party = Party.new(party_params)
+        if params[:category_id]
+            @category = Category.find_by(id: params[:category_id])
+        end
         @party.save
         if @party.valid?
         redirect_to parties_path
